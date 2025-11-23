@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kirándulási ötletek Tata környékén</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 1.8em;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            cursor: pointer;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: #667eea;
+        }
+
+        .content {
+            background: white;
+            border-radius: 20px;
+            padding: 40px;
+            margin-top: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            min-height: 70vh;
+        }
+
+        .page {
+            display: none;
+        }
+
+        .page.active {
+            display: block;
+            animation: fadeIn 0.5s;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        h1 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 2.5em;
+        }
+
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            font-size: 1.8em;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 40px 0;
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            color: #666;
+            margin-top: 15px;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.5em;
+        }
+
+        .card p {
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .highlight {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin: 30px 0;
+        }
+
+        .highlight h3 {
+            margin-bottom: 15px;
+            font-size: 1.6em;
+        }
+
+        ul {
+            margin-left: 20px;
+            margin-top: 15px;
+        }
+
+        li {
+            margin-bottom: 10px;
+            line-height: 1.8;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: white;
+            margin-top: 40px;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+
+            h1 {
+                font-size: 2em;
+            }
+
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">🏔️ Tata Felfedező</div>
+            <ul class="nav-links">
+                <li><a onclick="showPage('home')" class="active">Főoldal</a></li>
+                <li><a onclick="showPage('nature')">Természeti csodák</a></li>
+                <li><a onclick="showPage('culture')">Kultúra & História</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <div class="content">
+            <!-- FŐOLDAL -->
+            <div id="home" class="page active">
+                <div class="hero">
+                    <h1>Fedezd fel Tata és környékét!</h1>
+                    <p>Lenyűgöző természeti kincsek és történelmi látnivalók várnak rád</p>
+                </div>
+
+                <h2>Miért érdemes Tatára látogatni?</h2>
+                <p>Tata varázslatos város Komárom-Esztergom megyében, amely tökéletes kiindulópont izgalmas kirándulásokhoz. A város és környéke gazdag természeti és kulturális örökséget kínál minden korosztály számára.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>🦆 Öreg-tó</h3>
+                        <p>Európa egyik legjelentősebb vadlúd-megfigyelő helye. Ősszel és tavasszal ezrek állnak meg itt a vonuló madarak közül.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🏰 Tatai vár</h3>
+                        <p>A 14. században épült, majd a 18. században barokk stílusban átalakított vár Tata szimbóluma és büszkesége.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🌲 Gerecse hegység</h3>
+                        <p>Gyönyörű túraútvonalak, páratlan kilátás és gazdag növény- és állatvilág várja a természetjárókat.</p>
+                    </div>
+                </div>
+
+                <div class="highlight">
+                    <h3>💡 Tipp kezdőknek</h3>
+                    <p>Kezdd a felfedezést az Öreg-tó körüli sétával, majd látogass el a várba! Utána egy kellemes ebéd következhet a belvárosban, mielőtt nekivágnál a Gerecse túraútvonalainak.</p>
+                </div>
+            </div>
+
+            <!-- TERMÉSZETI LÁTNIVALÓK -->
+            <div id="nature" class="page">
+                <h1>Természeti csodák Tata környékén</h1>
+                
+                <h2>🦆 Öreg-tó - Madárparadicsom</h2>
+                <p>Az Öreg-tó Tata szívében helyezkedik el, és Európa egyik legfontosabb vadlúd-gyülekezőhelye. Évente több mint 50 000 vadlúd pihen meg itt a vonulás során.</p>
+                <ul>
+                    <li><strong>Legjobb időszak:</strong> Október-november és február-március</li>
+                    <li><strong>Madárfajok:</strong> Nagy lilik, vetési lúd, nyári lúd, szárcsa, vízityúk</li>
+                    <li><strong>Tevékenységek:</strong> Madármegfigyelés, sétálás, kerékpározás a tó körül</li>
+                </ul>
+
+                <h2>🌲 Gerecse hegység - Túrázók paradicsoma</h2>
+                <p>A Gerecse az észak-dunántúli középhegységek közé tartozik, legmagasabb pontja a 634 méteres Nagy-Gerecse. Kiváló útvonalak kezdőknek és haladóknak egyaránt.</p>
+                
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>Kezdő túrák</h3>
+                        <p><strong>Kálvária-domb:</strong> Könnyű, 1 órás séta gyönyörű kilátással Tatára és az Öreg-tóra.</p>
+                        <p><strong>Hosszúság:</strong> 2-3 km</p>
+                    </div>
+                    <div class="card">
+                        <h3>Közepes túrák</h3>
+                        <p><strong>Vértes-Gerecse túra:</strong> Változatos terep, erdei ösvények és sziklás szakaszok.</p>
+                        <p><strong>Hosszúság:</strong> 10-15 km</p>
+                    </div>
+                    <div class="card">
+                        <h3>Haladó túrák</h3>
+                        <p><strong>Nagy-Gerecse csúcstúra:</strong> Teljes napos program a legmagasabb csúcsra, lenyűgöző panorámával.</p>
+                        <p><strong>Hosszúság:</strong> 20+ km</p>
+                    </div>
+                </div>
+
+                <h2>🚴 Kerékpáros útvonalak</h2>
+                <p>Tata környéke tökéletes helyszín kerékpárosok számára is. A sík terep és a jól karbantartott utak ideálisak családi kirándulásokhoz.</p>
+                <ul>
+                    <li><strong>Öreg-tó körút:</strong> Könnyű, 8 km-es kör a tó körül</li>
+                    <li><strong>Tata-Tatabánya:</strong> 15 km, aszfaltozott kerékpárút</li>
+                    <li><strong>Gerecse kerékpárút:</strong> Kihívásokkal teli hegyikerékpár-útvonalak</li>
+                </ul>
+
+                <div class="highlight">
+                    <h3>🌿 Természetvédelmi információk</h3>
+                    <p>Az Öreg-tó és a Gerecse részben védett területek. Kérjük, tartsd tiszteletben a természetet: ne zavarj vadon élő állatokat, vidd magaddal a szemetet, és maradj a kijelölt ösvényeken!</p>
+                </div>
+            </div>
+
+            <!-- KULTURÁLIS LÁTNIVALÓK -->
+            <div id="culture" class="page">
+                <h1>Kultúra és történelem</h1>
+
+                <h2>🏰 Tatai vár</h2>
+                <p>A vár története a 14. századig nyúlik vissza, amikor is Zsigmond király idején épült. A vár a török hódoltság idején jelentős szerepet játszott, majd a 18. században barokk stílusban alakították át.</p>
+                <ul>
+                    <li><strong>Építés ideje:</strong> 14. század</li>
+                    <li><strong>Stílus:</strong> Gótika és barokk keveréke</li>
+                    <li><strong>Látnivalók:</strong> Múzeum, várudvar, kilátó</li>
+                    <li><strong>Nyitvatartás:</strong> Április-október: 10:00-18:00</li>
+                </ul>
+
+                <h2>⛪ Fő tér és Nepomuki Szent János szobor</h2>
+                <p>Tata barokk főtere egyedülálló hangulatot áraszt. A tér központjában áll Nepomuki Szent János szobra, a hidak és víz védőszentjének alkotása.</p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <h3>🎭 Kulturális programok</h3>
+                        <p>Nyáron számos fesztivál és kulturális rendezvény várja a látogatókat, köztük a híres Tatai Vadlúd Napok.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🏛️ Múzeumok</h3>
+                        <p>Kuny Domokos Múzeum: helytörténeti és régészeti kiállítások. Görög Kápolna: barokk remek a Fő téren.</p>
+                    </div>
+                    <div class="card">
+                        <h3>🎨 Művészeti galériák</h3>
+                        <p>Több kis galéria is működik a városban, ahol helyi művészek alkotásait csodálhatod meg.</p>
+                    </div>
+                </div>
+
+                <h2>🏛️ Közeli történelmi helyszínek</h2>
+                <p>Tata környéke gazdag történelmi örökségben:</p>
+                <ul>
+                    <li><strong>Vértesszőlős:</strong> Ősemberi lelőhely, kb. 10 km-re Tatától</li>
+                    <li><strong>Komárom:</strong> Csillagvár és erődrendszer, 30 km-re</li>
+                    <li><strong>Esztergom:</strong> Bazilika és vármúzeum, 40 km-re</li>
+                    <li><strong>Pannonhalma:</strong> Bencés főapátság (UNESCO), 70 km-re</li>
+                </ul>
+
+                <div class="highlight">
+                    <h3>🍽️ Gasztronómia</h3>
+                    <p>Ne hagyd ki a tatai ponyvacsárdákat és a helyi halászcsárdákat! A tatai ponty híres deliktesz, amit mindenképp érdemes megkóstolni. A környék borvidékei (Neszmély, Mór) kiváló borokat kínálnak.</p>
+                </div>
+
+                <h2>📅 Ajánlott programok évszakonként</h2>
+                <ul>
+                    <li><strong>Tavasz:</strong> Vadlúd megfigyelés, tavaszi túrák a Gerecsében</li>
+                    <li><strong>Nyár:</strong> Szabadtéri koncertek, fesztiválok, vízi sportok</li>
+                    <li><strong>Ősz:</strong> Vadlúd Napok, szüret, gombaszedés</li>
+                    <li><strong>Tél:</strong> Karácsonyi vásár, téli túrák, múzeumlátogatás</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Tata Felfedező | Készítve ❤️ -vel</p>
+    </footer>
+
+    <script>
+        function showPage(pageId) {
+            // Minden oldal elrejtése
+            document.querySelectorAll('.page').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Kiválasztott oldal megjelenítése
+            document.getElementById(pageId).classList.add('active');
+            
+            // Navigációs linkek aktív állapotának frissítése
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            
+            // Görgetés az oldal tetejére
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
